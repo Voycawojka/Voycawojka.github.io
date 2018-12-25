@@ -1,0 +1,203 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* body {
+    background-color: rgb(253, 253, 253);
+} */
+
+body > div {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    color: blue;
+}
+
+a:active {
+    color: red;
+}
+
+.screen-wide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.upper {
+    background-image: linear-gradient(white, whitesmoke);
+}
+
+.lower {
+    background-image: linear-gradient(whitesmoke, white);
+}
+
+@media screen and (max-width: 453px) {
+    .divide {
+        display: block;
+    }
+}
+
+.important-note {
+    font-size: 1.2em;
+}
+
+.lie {
+    text-decoration: line-through;
+}
+
+.header {
+    display: inline-block;
+    margin-bottom: 5em;
+}
+
+.header > h1 {
+    font-size: 5em;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.header > span {
+    float: right;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+@media screen and (max-width: 511px) {
+    #logo-desc {
+        width: 100%;
+        margin: auto auto;
+    }
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project {
+    display: flex;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+
+    background-color: white;
+
+    color: inherit;
+    font-style: inherit;
+    text-decoration: inherit;
+
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+    transition: box-shadow 0.3s;
+
+    cursor: pointer;
+}
+
+.project:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.project > img {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.project > .description {
+    padding: 2px 16px;
+}
+
+.project > .description > h4 {
+    margin-bottom: 0;
+}
+
+.project > .description > p {
+    margin-top: .5em;
+}
+
+.paragraph {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+
+    background-color: white;
+
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+    transition: box-shadow 0.3s;
+}
+
+.paragraph:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.paragraph > img {
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    margin-right: 2em;
+}
+
+.paragraph > div {
+    float: left;
+    text-align: left;
+    padding: 4px 16px;
+}
+
+.section {
+    margin-top: 5em;
+}
+
+.small-section {
+    margin-top: 2em;
+}
+
+@media screen and (max-width: 485px) {
+    .paragraph {
+        flex-wrap: wrap;
+        box-shadow: none;
+    }
+
+    .paragraph:hover {
+        box-shadow: none;
+    }
+
+    .paragraph > img {
+        margin: 0 auto;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+    }
+
+    .section {
+        margin-top: 1em;
+    }
+
+    .small-section {
+        margin-top: 1em;
+    }
+}
+
+.external-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.external-link {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.external-link > img {
+    width: 76px;
+    height: 76px;
+}
+
+.external-link > span {
+    display: block;
+    padding-top: 5px;
+}
