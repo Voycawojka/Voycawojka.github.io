@@ -2,10 +2,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* body {
-    background-color: rgb(253, 253, 253);
-} */
-
 body > div {
     margin: 0 auto;
     width: 100%;
@@ -59,6 +55,12 @@ a:active {
     margin-bottom: 0;
 }
 
+@media screen and (max-width: 334px) {
+    .header > h1 {
+        font-size: 20vw;
+    }
+}
+
 .header > span {
     float: right;
     font-size: 1.2em;
@@ -66,7 +68,7 @@ a:active {
 }
 
 @media screen and (max-width: 511px) {
-    #logo-desc {
+    .header > span {
         width: 100%;
         margin: auto auto;
     }
@@ -112,11 +114,12 @@ a:active {
 }
 
 .project > .description > h4 {
+    margin-top: 10%;
     margin-bottom: 0;
 }
 
 .project > .description > p {
-    margin-top: .5em;
+    margin-top: 5%;
 }
 
 .paragraph {
@@ -139,7 +142,7 @@ a:active {
     height: 200px;
     min-width: 200px;
     min-height: 200px;
-    margin-right: 2em;
+    margin: 0 auto;
 }
 
 .paragraph > div {
@@ -148,36 +151,27 @@ a:active {
     padding: 4px 16px;
 }
 
+@media screen and (max-width: 434px) {
+    .paragraph {
+        flex-wrap: wrap;
+        background-color: rgb(255, 253, 230);
+    }
+
+    .paragraph > div {
+        background-color: white;
+    }
+
+    .paragraph > img {
+        box-shadow: none;
+    }
+}
+
 .section {
     margin-top: 5em;
 }
 
 .small-section {
     margin-top: 2em;
-}
-
-@media screen and (max-width: 485px) {
-    .paragraph {
-        flex-wrap: wrap;
-        box-shadow: none;
-    }
-
-    .paragraph:hover {
-        box-shadow: none;
-    }
-
-    .paragraph > img {
-        margin: 0 auto;
-        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
-    }
-
-    .section {
-        margin-top: 1em;
-    }
-
-    .small-section {
-        margin-top: 1em;
-    }
 }
 
 .external-links {
