@@ -81,9 +81,10 @@ a:active {
 }
 
 .project {
+    position: relative;
     display: flex;
     width: 300px;
-    height: 100px;
+    height: 169px;
     margin: 10px;
 
     background-color: white;
@@ -102,24 +103,57 @@ a:active {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
 }
 
+@media screen and (max-width: 400px) {
+    .project {
+        margin-left: 0;
+        margin-right: 0;
+
+        width: 100%;
+        height: auto;
+    }
+}
+
 .project > img {
-    width: 100px;
-    height: 100px;
-    min-width: 100px;
-    min-height: 100px;
+    width: 100%;
+    height: 100%;
+}
+
+.project:hover > .description {
+    opacity: 1;
+    transition: opacity 0.75s;
 }
 
 .project > .description {
-    padding: 2px 16px;
-}
+    opacity: 0;
+    transition: opacity 0.75s;
 
-.project > .description > h4 {
-    margin-top: 10%;
-    margin-bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffce;
 }
 
 .project > .description > p {
     margin-top: 5%;
+}
+
+.project:hover > h4 {
+    opacity: 0;
+    transition: opacity 0.75s;
+}
+
+.project > h4 {
+    opacity: 1;
+    transition: opacity 0.75s;
+
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    width: 100%;
+    text-align: center;
+    background-color: #ffffffce;
 }
 
 .paragraph {
@@ -140,8 +174,6 @@ a:active {
 .paragraph > img {
     width: 200px;
     height: 200px;
-    min-width: 200px;
-    min-height: 200px;
     margin: 0 auto;
 }
 
@@ -163,6 +195,13 @@ a:active {
 
     .paragraph > img {
         box-shadow: none;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .paragraph > img {
+        width: 100%;
+        height: auto;
     }
 }
 
