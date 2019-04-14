@@ -135,6 +135,8 @@ a:active {
 
 .project > .description > p {
     margin-top: 5%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .project:hover > h4 {
