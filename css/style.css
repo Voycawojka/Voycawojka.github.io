@@ -55,9 +55,10 @@ a:active {
     margin-bottom: 0;
 }
 
-@media screen and (max-width: 334px) {
+@media screen and (max-width: 500px) {
     .header > h1 {
         font-size: 20vw;
+        overflow-wrap: break-word;
     }
 }
 
@@ -212,7 +213,21 @@ a:active {
 }
 
 .small-section {
-    margin-top: 2em;
+    margin-top: 0;
+}
+
+.social-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-subsection {
+    display: inline-block;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .external-links {
