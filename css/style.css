@@ -164,7 +164,7 @@ a:active {
     max-width: 600px;
     margin: 0 auto;
 
-    background-color: white;
+    background-color: #fffbe8;
 
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
     transition: box-shadow 0.3s;
@@ -185,6 +185,7 @@ a:active {
     float: left;
     text-align: left;
     padding: 4px 16px;
+    background-color: white;
 }
 
 @media screen and (max-width: 434px) {
