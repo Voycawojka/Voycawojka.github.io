@@ -177,7 +177,7 @@ a:active {
 .paragraph > img {
     min-width: 200px;
     height: 200px;
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 .paragraph > div {
@@ -252,4 +252,12 @@ a:active {
 .external-link > span {
     display: block;
     padding-top: 5px;
+}
+
+.external-description {
+    padding-top: 25px;
+}
+
+.external-description > span {
+    display: block;
 }
