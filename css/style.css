@@ -175,12 +175,13 @@ a:active {
 }
 
 .paragraph > img {
-    width: 200px;
+    min-width: 200px;
     height: 200px;
     margin: 0 auto;
 }
 
 .paragraph > div {
+    max-width: 400px;
     float: left;
     text-align: left;
     padding: 4px 16px;
