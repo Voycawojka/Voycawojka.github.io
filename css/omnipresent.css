@@ -1,0 +1,15 @@
+a {
+    color: blue;
+}
+
+a:active {
+    color: red;
+}
+
+.important-note {
+    font-size: 1.2em;
+}
+
+.lie {
+    text-decoration: line-through;
+}

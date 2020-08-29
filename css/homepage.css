@@ -8,14 +8,6 @@ body > div {
     text-align: center;
 }
 
-a {
-    color: blue;
-}
-
-a:active {
-    color: red;
-}
-
 .screen-wide {
     position: relative;
     min-height: 100vh;
@@ -34,14 +26,6 @@ a:active {
     .divide {
         display: block;
     }
-}
-
-.important-note {
-    font-size: 1.2em;
-}
-
-.lie {
-    text-decoration: line-through;
 }
 
 .header {
@@ -75,21 +59,41 @@ a:active {
     }
 }
 
-.projects {
+.creations {
+    display: grid;
+    grid-template-areas: "posts projects";
+}
+
+.projects, .recent-posts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.project {
-    position: relative;
-    display: flex;
-    width: 300px;
-    height: 169px;
-    margin: 10px;
+.recent-posts {
+    grid-area: posts;
+    max-width: 500px;
+    align-content: flex-start;
+}
 
-    background-color: white;
+@media screen and (max-width: 1155px) {
+    .creations {
+        grid-template-areas: 
+            "projects"
+            "posts";
+    }
 
+    .recent-posts {
+        max-width: 100%;
+        margin-top: 30px;;
+    }
+}
+
+.projects {
+    grid-area: projects;
+}
+
+.project, .post-preview {
     color: inherit;
     font-style: inherit;
     text-decoration: inherit;
@@ -100,8 +104,59 @@ a:active {
     cursor: pointer;
 }
 
-.project:hover {
+.project:hover, .post-preview:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.post-preview {
+    width: 500px;
+    height: 100px;
+    margin: 10px;
+    padding-right: 5px;
+
+    text-align: left;
+}
+
+.post-preview > img {
+    float: left;
+    width: 180px;
+    height: 100px;
+    margin-right: 8px;
+}
+
+.post-preview > h4, .post-preview > p {
+    padding: 0;
+    margin: 8px;
+    min-height: 36px;
+}
+
+@media screen and (max-width: 540px) {
+    .post-preview {
+        width: 100%;
+    }
+
+    .post-preview > h4 {
+        height: 100%;
+        margin-top: 0;
+        
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .post-preview > p {
+        display: none;
+    }
+}
+
+.project {
+    position: relative;
+    display: flex;
+    width: 300px;
+    height: 169px;
+    margin: 10px;
+
+    background-color: white;
 }
 
 @media screen and (max-width: 400px) {
@@ -111,6 +166,11 @@ a:active {
 
         width: 100%;
         height: auto;
+    }
+
+    .post-preview {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
