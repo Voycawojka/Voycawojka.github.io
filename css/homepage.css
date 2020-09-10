@@ -130,6 +130,10 @@ body > div {
     min-height: 36px;
 }
 
+.post-preview > p {
+    font-size: 14px;
+}
+
 @media screen and (max-width: 540px) {
     .post-preview {
         width: 100%;
