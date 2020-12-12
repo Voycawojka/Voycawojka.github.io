@@ -75,6 +75,33 @@ pre {
     margin-bottom: 20px;
 }
 
+canvas {
+    border: 1px solid black;
+    max-width: 100%;
+}
+
+.button-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.button-group button {
+    background-color: whitesmoke;
+    font-family: inherit;
+    font-weight: bold;
+    min-width: 70px;
+    height: 40px;
+    padding: 10px 24px;
+    margin: 1px;
+    float: left;
+    border: 1px solid black;
+}
+
+.button-group button:hover {
+    background-color: cornflowerblue;
+}
+
 @media screen and (max-width: 1350px) {
     body > div {
         width: 80%;

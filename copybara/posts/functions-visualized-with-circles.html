@@ -1,0 +1,175 @@
+<!-- !cb-param title "Functions visualized with pretty circles" -->
+<!-- !cb-param img "circle-packing.png" -->
+<!-- !cb-param keywords "graphs, functions, math, art, visualization, canvas, demo, javascript, tutorial" -->
+<!-- !cb-param desc "Interactive demo and explanation of circle packing used on mathematical functions." -->
+
+<script src="/toys/circle-packing-graphs/circle-packing-graphs.js"></script>
+
+<p>
+    To pack a space with circles means to put circles in it so that if you were to enlarge any of them they would overlap.
+</p>
+<p>
+    It's a simple concept, but I believe it has many interesting applications for games and art. 
+    Transforming photos into the <i>"circle style"</i> has been done a lot. 
+    I haven't seen it used for abstract (<i>"mathematical"</i>) art or world generation, though.
+</p>
+
+<h2>Demo time</h2>
+<p>
+    Before diving into more details I'll show you a simple demo of what circle packing may look like.
+</p>
+<p>
+    I've coded this in vanilla JavaScript while experimenting. It animates circle packing based on provided mathematical formula.
+    Go ahead and click the buttons to see it come alive.
+</p>
+
+<div class="button-group">
+    <button onClick="demoCtrl.run(x => 0, 'y = 0')">Line</button>
+    <button onClick="demoCtrl.run(x => Math.sin(x), 'y = sin(x)', { color: 'blue' })">Wave</button>
+    <button onClick="demoCtrl.run(x => Math.tan(x), 'y = tan(x)')">Stripes</button>
+    <button onClick="demoCtrl.run(x => Math.sin(x) * Math.tan(x), 'y = sin(x) * tan(x)', { color: 'white', bgColor: 'red' })">Teeth</button>
+    <button onClick="demoCtrl.run(x => 0, 'r = 0', { circular: true })">Circle</button>
+    <button onClick="demoCtrl.run(x => Math.sin(x), 'r = sin(α)', { circular: true, color: 'white', bgColor: 'green' })">Flower</button>
+    <button onClick="demoCtrl.run(x => Math.max(-0.9, Math.tan(x)), 'r = max(-0.9, tan(α))', { circular: true, color: 'yellow', bgColor: 'black' })">Sun</button>
+    <button onClick="demoCtrl.run(x => (Math.random() - 0.5) * x / 4 * Math.sin(x), 'y = rand(-0.5, 0.5) * x / 4 * sin(x)', { color: 'green', bgColor: 'black' })">Christmas tree</button>
+</div>
+
+
+<canvas id="initial-demo" width="800" height="600"></canvas>
+
+<script>
+    const demoCtrl = createCircleGraph('initial-demo')
+</script>
+
+<p>
+    I know the "Christmas tree" is sideways, but you can just tilt your head and pretend it's fine.
+</p>
+<p>
+    If you are reading this article on your computer feel free to open the developer console and call the <i>demoCtrl.run()</i> function. A few examples you can try:
+</p>
+<pre><code class="javascript">// Mountains
+demoCtrl.run(x => Math.sin(x) * Math.cos(x/3), 'y = sin(x) * cos(x/3)')
+
+// Snail
+demoCtrl.run(x => x / 30, 'r = α / 30', { circular: true, color: 'white', bgColor: 'green' })
+</code></pre>
+
+<h2>The demo</h2>
+
+<p>
+    The source code is available 
+    <a href="https://github.com/Voycawojka/Voycawojka.github.io/blob/master/toys/circle-packing-graphs/circle-packing-graph.js" rel="noopener noreferrer" target="_blank">here</a>.
+    Don't expect anything fancy, though. It's just a quick prototype taking up less than 200 lines.
+</p>
+
+<h3>Basic algorithm</h3>
+
+<p>
+    The idea is to spawn circles randomly on the screen and then gradually inrease their size. A circle stops growing when it collides with another circle or a screen edge.
+</p>
+<p>
+    In my case I spawn up to 20 circles every frame and grow their radiuses (or <i>radii</i>) uniformly by 20 pixels per second. 
+    Also, instead of placing them fully randomly, I do the following:
+</p>
+<ul>
+    <li>gradually increase the <i>x</i> coordinate over time (5 pixels per second)</li>
+    <li>calculate the <i>y</i> coordinate based on some function taking <i>x</i> as input</li>
+</ul>
+<p>
+    And on top of that I add a little random variation to the position of each circle (+ 0-25 pixels for each coordinate).
+</p>
+
+<h3>Circle out of circles</h3>
+
+<p>
+    Of course, for the circular effect (like the <i>Flower</i> and <i>Sun</i> examples in the demo), the position algorithm is slightly different. 
+    Instead of increasing <i>x</i> over time, the angle is increased instead. Drawing the circles along a normal circle then looks like this:
+</p>
+<pre><code class="javascript">x = centerX + radius * Math.cos(angle)
+y = centerY + radius * Math.sin(angle)
+</code></pre>
+
+<img src="/assets/posts/circle-packing/basic-circles-in-circle.png" alt="a basic circle made out of circles" />
+
+<p>
+    To get the desired effect we can adjust the radius based on some function taking the <i>angle</i> as input (same as the <i>y</i> coordinate before). 
+</p>
+<pre><code class="javascript">const adjustedR = radius * someFunc(angle)
+
+x = centerX + adjustedR * Math.cos(angle)
+y = centerY + adjustedR * Math.sin(angle)
+</code></pre>
+
+<img src="/assets/posts/circle-packing/basic-flower.png" alt="a flower made out of circles" />
+
+<p>
+    This looks nice already. To get the same effect as in the demo, just add some random variation:
+</p>
+<pre><code class="javascript">x += Math.random() * randFactor
+y += Math.random() * randFactor
+</code></pre>
+
+<img src="/assets/posts/circle-packing/full-flower.png" alt="a flower made out of circles" />
+
+<h3>Performance</h3>
+
+<p>
+    While writing the demo I stumbled upon some animation performance issues. They were caused by drawing a lot of strokes (in circle form) on the canvas.
+    Probably the best way to resolve them would be to use WebGL instead. I didn't, though, and tried to be smart about using the canvas.
+</p>
+<p>
+    The first idea I had was to redraw only the part of the canvas to the right from the last circle that's still growing. 
+    This means I wouldn't clear and redraw most of the circles that are not changing anymore.
+</p>
+
+<img src="/assets/posts/circle-packing/redrawing-approach-one.png" alt="redrawing part of canvas only visualization" />
+
+<p>
+    This worked. But only for the <i>"increasing x coordinate over time"</i> version of the algorithm. 
+    It's tricky to detect which parts of the canvas to redraw in the circular version.
+</p>
+<p>
+    Finally, I decided not to clear the canvas at all.
+</p>
+<p>
+    Instead, every frame the circles that are still growing get covered by background colored circles. Only then newly grown circles are drawn again.
+    This way only the pixels that actually changed are redrawn. It turned out to be efficient enough for my needs (that is - runs smoothly on my phone).
+</p>
+
+<h4>Collision checks</h4>
+
+<p>
+    Also, note that checking which circles are blocked can potentially be a performance bottleneck. 
+    To check for collisions you have to check every circle against every other circle. If there are 1000 circles you'll end up with 1,000,000 checks every frame.
+</p>
+<p>
+    The simplest way to mitigate it is to mark the blocked circles as such so they are not checked again. 
+    I also store them in a separate array so the algorithm doesn't need to iterate over the blocked circles when only growing ones are needed. 
+    Assuming there are 1000 circles but only 50 of them are growing - this gives us 50,000 checks every frame. A lot better.
+</p>
+<p>
+    If not for the circular version of the animation, old circles could even be removed from memory entirely. 
+    That's because there isn't a need to check for collision with them and they're drawn to the screen already.
+</p>
+
+<img src="/assets/posts/circle-packing/removing-circles-potentail-approach.png" alt="potential approach of removing old circles" />
+
+<h2>Other application</h2>
+
+<p>
+    I tried to think of other ways to utilize circle packing. Math animations are cool but could it be used for procedural world generation? This is what i came up with:
+</p>
+<p>
+    Spawn circles randomly until some percent of space is filled and create a world map with properties such as elevation, biomes, oceans, cities, etc based on:
+</p>
+<ul>
+    <li>circle density in a given area</li>
+    <li>whether a point is inside a circle or not</li>
+    <li>how many other circles a given circle collides with</li>
+    <li>the distance to the biggest and/or smallest circle on the map</li>
+    <li>and possibly other properties</li>
+</ul>
+<p>
+    Having proposed that, this deserves an article on its own. Let me now what you think. Maybe I'll explore this idea further. 
+    Stay tuned and join my mailing list if you like this kind of stuff and would like to be notified about new articles.
+</p>
