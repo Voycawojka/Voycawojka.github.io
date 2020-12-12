@@ -5,12 +5,18 @@ body > div {
 
 h1 {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
 }
 
 h2 {
     margin-top: 35px;
     margin-bottom: 25px;
+}
+
+.date {
+    line-height: 32px;
+    letter-spacing: -0.003em;
+    margin-bottom: 45px;
 }
 
 .article > img {
