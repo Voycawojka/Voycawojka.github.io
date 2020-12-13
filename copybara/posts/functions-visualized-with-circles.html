@@ -28,7 +28,7 @@
     <button onClick="demoCtrl.run(x => 0, 'y = 0')">Line</button>
     <button onClick="demoCtrl.run(x => Math.sin(x), 'y = sin(x)', { color: 'blue' })">Wave</button>
     <button onClick="demoCtrl.run(x => Math.tan(x), 'y = tan(x)')">Stripes</button>
-    <button onClick="demoCtrl.run(x => Math.sin(x) * Math.tan(x), 'y = sin(x) * tan(x)', { color: 'white', bgColor: 'red' })">Teeth</button>
+    <button onClick="demoCtrl.run(x => Math.sin(x) * Math.tan(x), 'y = sin(x) * tan(x)')">Teeth</button>
     <button onClick="demoCtrl.run(x => 0, 'r = 0', { circular: true })">Circle</button>
     <button onClick="demoCtrl.run(x => Math.sin(x), 'r = sin(α)', { circular: true, color: 'white', bgColor: 'green' })">Flower</button>
     <button onClick="demoCtrl.run(x => Math.max(-0.9, Math.tan(x)), 'r = max(-0.9, tan(α))', { circular: true, color: 'yellow', bgColor: 'black' })">Sun</button>
@@ -51,7 +51,7 @@
 <pre><code class="javascript">// Mountains
 demoCtrl.run(x => Math.sin(x) * Math.cos(x/3), 'y = sin(x) * cos(x/3)')
 
-// Snail
+// Spiral
 demoCtrl.run(x => x / 30, 'r = α / 30', { circular: true, color: 'white', bgColor: 'green' })
 </code></pre>
 
@@ -66,7 +66,7 @@ demoCtrl.run(x => x / 30, 'r = α / 30', { circular: true, color: 'white', bgCol
 <h3>Basic algorithm</h3>
 
 <p>
-    The idea is to spawn circles randomly on the screen and then gradually inrease their size. A circle stops growing when it collides with another circle or a screen edge.
+    The idea is to spawn circles randomly on the screen and then gradually increase their size. A circle stops growing when it collides with another circle or a screen edge.
 </p>
 <p>
     In my case I spawn up to 20 circles every frame and grow their radiuses (or <i>radii</i>) uniformly by 20 pixels per second. 
@@ -171,6 +171,6 @@ y += Math.random() * randFactor
     <li>and possibly other properties</li>
 </ul>
 <p>
-    Having proposed that, this deserves an article on its own. Let me now what you think. Maybe I'll explore this idea further. 
+    Having proposed that, this deserves an article on its own. Let me know what you think. Maybe I'll explore this idea further. 
     Stay tuned and join my mailing list if you like this kind of stuff and would like to be notified about new articles.
 </p>
