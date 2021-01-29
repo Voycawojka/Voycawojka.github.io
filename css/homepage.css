@@ -61,7 +61,9 @@ body > div {
 
 .creations {
     display: grid;
-    grid-template-areas: "posts projects";
+    grid-template-areas: 
+        ".     categories"
+        "posts projects";
 }
 
 .projects, .recent-posts {
@@ -76,9 +78,19 @@ body > div {
     align-content: flex-start;
 }
 
+.categories {
+    grid-area: categories;
+}
+
+.categories > a {
+    font-size: 1.2em;
+    margin: 7px;
+}
+
 @media screen and (max-width: 1155px) {
     .creations {
         grid-template-areas: 
+            "categories"
             "projects"
             "posts";
     }

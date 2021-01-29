@@ -38,7 +38,38 @@
                 <!-- [order by date, max 5] [?] -->
             </div>
 
-            <div class="projects">
+            <div class="categories">
+                <a href="#" onclick="setCategory('games')">Games</a>
+                <a href="#" onclick="setCategory('tools')">Tools</a>
+            </div>
+
+            <div class="projects tools">
+                <a href="https://calligro.ideasalmanac.com/" target="_blank" class="project">
+                    <img src="assets/calligro.png">
+                    <div class="description">
+                        <h4>Calligro</h4>
+                        <p>
+                            Online open source bitmap font generator compatible with most game engines and frameworks.
+                        </p>
+                    </div>
+                    <h4>Calligro</h4>
+                </a>
+
+            </div>
+
+            <div class="projects games">
+                <a href="https://voycawojka.itch.io/snow-phantom" target="_blank" class="project">
+                    <img src="assets/snow_phantom.png">
+                    <div class="description">
+                        <h4>Snow Phantom</h4>
+                        <p>
+                            You're in a loop of killing yourself, becoming a ghost, and possessing new bodies.
+                            Made in 3 days for Minijam 72 - Adventure.
+                        </p>
+                    </div>
+                    <h4>Snow Phantom</h4>
+                </a>
+
                 <a href="https://voycawojka.itch.io/talekeeper" target="_blank" class="project">
                     <img src="assets/talekeeper.png">
                     <div class="description">
@@ -175,6 +206,16 @@
             <a href="#projects" class="important-note">Go up again</a>
         </div>
     </div>
+
+    <script>
+        function setCategory(category) {
+            for (const project of document.getElementsByClassName("projects")) {
+                project.style.visibility = project.classList.contains(category) ? "visible" : "hidden";
+            }
+        }
+
+        setCategory("games");
+    </script>
 </body>
 
 </html>
