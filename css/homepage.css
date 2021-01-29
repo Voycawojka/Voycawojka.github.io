@@ -82,9 +82,28 @@ body > div {
     grid-area: categories;
 }
 
-.categories > a {
+.categories > button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
     font-size: 1.2em;
     margin: 7px;
+}
+
+.categories > button:active {
+    color: red;
+}
+
+.categories > button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.projects.hidden-tab {
+    visibility: hidden;
 }
 
 @media screen and (max-width: 1155px) {
@@ -98,6 +117,10 @@ body > div {
     .recent-posts {
         max-width: 100%;
         margin-top: 30px;;
+    }
+
+    .projects.hidden-tab {
+        display: none;
     }
 }
 
@@ -180,8 +203,10 @@ body > div {
         margin-left: 0;
         margin-right: 0;
 
+        object-fit: cover;
         width: 100%;
         height: auto;
+        max-height: 225px;
     }
 
     .post-preview {

@@ -39,8 +39,8 @@
             </div>
 
             <div class="categories">
-                <a href="#" onclick="setCategory('games')">Games</a>
-                <a href="#" onclick="setCategory('tools')">Tools</a>
+                <button onclick="setCategory('games')">Games</button>
+                <button onclick="setCategory('tools')">Tools</button>
             </div>
 
             <div class="projects tools">
@@ -210,7 +210,13 @@
     <script>
         function setCategory(category) {
             for (const project of document.getElementsByClassName("projects")) {
-                project.style.visibility = project.classList.contains(category) ? "visible" : "hidden";
+                const current = project.classList.contains(category)
+
+                if (current) {
+                    project.classList.remove("hidden-tab");
+                } else {
+                    project.classList.add("hidden-tab");
+                }
             }
         }
 
