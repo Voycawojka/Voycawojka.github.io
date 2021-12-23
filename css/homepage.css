@@ -63,19 +63,34 @@ body > div {
     display: grid;
     grid-template-areas: 
         ".     categories"
-        "posts projects";
+        "promo projects";
 }
 
-.projects, .recent-posts {
+.projects, .promo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.recent-posts {
-    grid-area: posts;
-    max-width: 500px;
+.promo {
+    grid-area: promo;
     align-content: flex-start;
+    background-image: url('/assets/promo.png');
+    width: 616px;
+    height: 353px;
+    position: relative;
+    transform: rotate(-1deg);
+    margin-left: 60px;
+    margin-right: 30px;
+    margin-bottom: 190px;
+    justify-self: center;
+
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .2);
+}
+
+.promo > iframe {
+    position: absolute;
+    bottom: -160px;
 }
 
 .categories {
@@ -108,15 +123,19 @@ body > div {
 
 @media screen and (max-width: 1155px) {
     .creations {
-        grid-template-areas: 
+        grid-template-areas:
+            "promo" 
             "categories"
-            "projects"
-            "posts";
+            "projects";
     }
 
-    .recent-posts {
+    .promo {
         max-width: 100%;
         margin-top: 30px;;
+
+        transform: none;
+
+        display: none;
     }
 
     .projects.hidden-tab {
